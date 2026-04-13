@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatizáció - Turnai András Levente</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* CHAT UI SZÍNEK */
+      --chat--color--primary: #1e293b;
+      --chat--color--primary-shade-50: #0f172a;
+
+      --chat--window--width: 400px;
+      --chat--window--height: 600px;
+      --chat--window--border-radius: 24px;
+
+      --chat--header--background: #0f172a;
+      --chat--header--color: #ffffff;
+
+      --chat--body--background: #ffffff;
+
+      --chat--message--bot--background: #1e293b;
+      --chat--message--bot--color: #ffffff;
+      --chat--message--bot--border-radius: 12px;
+
+      --chat--message--user--background: #f1f5f9;
+      --chat--message--user--color: #0f172a;
+
+      --chat--footer--background: #ffffff;
+      --chat--input--background: #ffffff;
+      /* BEVITELI MEZŐ SZÖVEGSZÍNE FEKETE */
+      --chat--input--text-color: #000000; 
+      --chat--input--border: 1px solid #e2e8f0;
+      
+      --chat--font-family: 'Inter', sans-serif;
+    }
+.n8n-chat-input input,
+      .n8n-chat-input textarea,
+      [class*="n8n-chat"] input,
+      [class*="n8n-chat"] textarea {
+        color: #000000 !important;
+      }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    /* WEBOLDAL STÍLUSOK */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 { font-size: 20px; font-weight: 600; }
+
+    nav a {
+      color: #94a3b8;
+      margin-left: 20px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav a:hover { color: #fff; }
+
+    .hero {
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h2 { font-size: 48px; margin-bottom: 20px; color: #fff; }
+    .hero p { font-size: 18px; color: #94a3b8; max-width: 600px; }
+
+    .section {
+      padding: 60px 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    /* JOGI SZEKCIÓK STÍLUSA */
+    .legal-content {
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 16px;
+      margin-top: 40px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .legal-content h3 { color: #fff; margin-bottom: 20px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+    .legal-content h4 { color: #fff; margin: 15px 0 5px 0; }
+    .legal-content p, .legal-content li { color: #94a3b8; font-size: 14px; margin-bottom: 10px; }
+    .legal-content ul { padding-left: 20px; margin-bottom: 15px; }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    /* CHAT INPUT SZÍN KÉNYSZERÍTÉS */
+    .n8n-chat-input input {
+      color: #000000 !important;
+    }
+  </style>
+</head>
+
+<body>
+createChat({
+	webhookUrl: '',
+	webhookConfig: {
+		method: 'POST',
+		headers: {}
+	},
+	target: '#n8n-chat',
+	mode: 'window',
+	chatInputKey: 'chatInput',
+	chatSessionKey: 'sessionId',
+	loadPreviousSession: true,
+	metadata: {},
+	showWelcomeScreen: false,
+	defaultLanguage: 'en',
+	initialMessages: [
+		'Szia! 👋',
+		'Segítek automatizációban, AI-ban. Ha bármi kérdésed van, írj nyugodtan!'
+	],
+	i18n: {
+		en: {
+			title: 'AI Automatizációs chat-bot',
+			subtitle: "Írj nekünk. 0-24 azonnal válaszolunk!",
+			footer: '',
+			getStarted: 'Új beszélgetés',
+			inputPlaceholder: 'Mit szeretnél kérdezni?',
+		},
+	},
+	enableStreaming: false,
+});
+
+<header>
+  <h1>Automatizáció</h1>
+  <nav>
+    <a href="#">Kezdőlap</a>
+    <a href="#impresszum">📄 Impresszum</a>
+    <a href="#adatvedelem">🔐 Adatvédelem</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Okos Automatizáció</h2>
+  <p>Időt spórolunk, rendszereket optimalizálunk és AI megoldásokat építünk.</p>
+</section>
+
+<section class="section">
+  <div class="cards">
+    <div class="card">
+      <h4>Folyamatautomatizálás</h4>
+      <p>Ismétlődő feladatok teljes automatizálása.</p>
+    </div>
+    <div class="card">
+      <h4>Integrációk</h4>
+      <p>Rendszerek összekötése hatékony workflow-val.</p>
+    </div>
+    <div class="card">
+      <h4>AI megoldások</h4>
+      <p>Mesterséges intelligencia üzleti folyamatokhoz.</p>
+    </div>
+  </div>
+
+  <div id="impresszum" class="legal-content">
+    <h3>📄 Impresszum</h3>
+    <p><strong>Név:</strong> Turnai András Levente</p>
+    <p><strong>Székhely:</strong> 1064 Budapest, Vörösmarty utca 73.</p>
+    <p><strong>E-mail:</strong> turnai.andras@gmail.com</p>
+    <p><strong>Tevékenység:</strong> AI automatizációs szolgáltatások nyújtása</p>
+    <p><em>Az oldalon megjelenő tartalmak szerzői jogi védelem alatt állnak. Azok másolása, terjesztése kizárólag a tulajdonos előzetes írásbeli engedélyével lehetséges.</em></p>
+  </div>
+
+  <div id="adatvedelem" class="legal-content">
+    <h3>🔐 Adatvédelmi tájékoztató</h3>
+    
+    <h4>1. Az adatkezelő adatai</h4>
+    <p>Név: Turnai András Levente<br>Székhely: 1064 Budapest, Vörösmarty utca 73.<br>E-mail: turnai.andras@gmail.com</p>
+
+    <h4>2. Kezelt adatok köre</h4>
+    <ul>
+      <li>név</li>
+      <li>e-mail cím</li>
+      <li>telefonszám</li>
+    </ul>
+
+    <h4>3. Az adatkezelés célja</h4>
+    <ul>
+      <li>kapcsolatfelvétel biztosítása</li>
+      <li>ajánlatadás</li>
+      <li>ügyfélkommunikáció</li>
+      <li>szolgáltatás nyújtása</li>
+    </ul>
+
+    <h4>4. Az adatkezelés jogalapja</h4>
+    <p>Az adatkezelés jogalapja az érintett önkéntes hozzájárulása.</p>
+
+    <h4>5. Az adatok tárolása és feldolgozása</h4>
+    <p>Az adatok feldolgozása az alábbi rendszerekben történhet:</p>
+    <ul>
+      <li>CRM rendszer</li>
+      <li>e-mail küldő szolgáltatás</li>
+      <li>chatbot és automatizációs rendszerek</li>
+      <li>AI alapú feldolgozó rendszerek</li>
+    </ul>
+
+    <h4>6. Adatfeldolgozók és harmadik felek</h4>
+    <p>A szolgáltatás működtetése során harmadik fél szolgáltatók is részt vehetnek (pl. tárhelyszolgáltató, CRM, AI szolgáltatók).</p>
+
+    <h4>7. Az adatok megőrzési ideje</h4>
+    <p>A kapcsolat fennállásáig, illetve annak megszűnését követően legfeljebb 5 évig.</p>
+
+    <h4>8. Az érintettek jogai</h4>
+    <p>Tájékoztatás kérése, helyesbítés, törlés, korlátozás, tiltakozás az adatkezelés ellen.</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Automatizáció - Minden jog fenntartva.
+</footer>
+
+<script type="module">
+  import { createChat } from '
