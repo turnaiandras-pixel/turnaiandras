@@ -12,473 +12,896 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TurnAI | Weboldali AI chat</title>
-  <meta name="description" content="Prémium, gyorsan bevezethető weboldali AI chat vállalkozásoknak. Gyakori kérdések, érdeklődőkezelés, tiszta és bizalomépítő megjelenés." />
+  <title>Árazás | TurnAI</title>
+  <meta name="description" content="Weboldali AI chat már 19 990 Ft / hó ártól. Gyors bevezetés, gyakori kérdések megválaszolása és érdeklődők fogadása vállalkozásoknak." />
 
   <style>
-    :root{
-      --bg0:#040a13;
-      --bg1:#07111f;
-      --bg2:#0b1627;
-      --panel:rgba(10,17,30,.66);
-      --panel-2:rgba(14,23,39,.82);
-      --panel-3:rgba(255,255,255,.035);
-      --text:#e7eef7;
-      --text-2:#f7fbff;
-      --muted:#97a9ba;
-      --line:rgba(255,255,255,.08);
-      --line-2:rgba(255,255,255,.13);
-      --accent:#20b69e;
-      --accent-2:#2ad3b8;
-      --accent-soft:rgba(32,182,158,.12);
-      --shadow:0 34px 100px rgba(0,0,0,.44);
-      --shadow-soft:0 18px 50px rgba(0,0,0,.25);
-      --r-xl:34px;
-      --r-lg:26px;
-      --r-md:18px;
-      --max:1540px;
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1627;
+      --bg-3: #0e1b2f;
+      --surface: rgba(13, 21, 36, 0.68);
+      --surface-strong: rgba(12, 19, 33, 0.86);
+      --surface-soft: rgba(255, 255, 255, 0.035);
+      --surface-elevated: rgba(19, 29, 47, 0.88);
+      --text: #e5eef8;
+      --text-strong: #f7fbff;
+      --muted: #94a3b8;
+      --muted-2: #aab9c8;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.14);
+      --line-accent: rgba(32, 182, 158, 0.24);
+      --primary: #20b69e;
+      --primary-dark: #17917f;
+      --primary-soft: rgba(32, 182, 158, 0.12);
+      --primary-softer: rgba(32, 182, 158, 0.08);
+      --glow: rgba(32, 182, 158, 0.18);
+      --shadow-xl: 0 40px 120px rgba(0, 0, 0, 0.48);
+      --shadow-lg: 0 28px 72px rgba(0, 0, 0, 0.34);
+      --shadow-md: 0 18px 44px rgba(0, 0, 0, 0.24);
+      --radius-xl: 34px;
+      --radius-lg: 28px;
+      --radius: 22px;
+      --radius-sm: 16px;
+      --max: 1520px;
+      --content-max: 1440px;
+      --section-space: 42px;
+      --hero-space: 48px;
+      --header-height: 92px;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--text);
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
       background:
-        radial-gradient(circle at 12% 8%, rgba(32,182,158,.12), transparent 20%),
-        radial-gradient(circle at 88% 12%, rgba(32,182,158,.08), transparent 18%),
-        radial-gradient(circle at 78% 78%, rgba(32,182,158,.06), transparent 18%),
-        radial-gradient(circle at 50% 100%, rgba(255,255,255,.03), transparent 26%),
-        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 38%, #08111e 100%);
-      min-height:100vh;
-      overflow-x:hidden;
-      position:relative;
-      line-height:1.6;
+        radial-gradient(circle at 10% 8%, rgba(32, 182, 158, 0.14), transparent 24%),
+        radial-gradient(circle at 88% 12%, rgba(32, 182, 158, 0.08), transparent 18%),
+        radial-gradient(circle at 72% 78%, rgba(32, 182, 158, 0.07), transparent 20%),
+        radial-gradient(circle at 35% 100%, rgba(255, 255, 255, 0.03), transparent 28%),
+        linear-gradient(180deg, #050d18 0%, #07111f 42%, #081220 100%);
+      position: relative;
+      overflow-x: hidden;
     }
 
     body::before,
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    body::before{
+    body::before {
       background:
-        linear-gradient(rgba(255,255,255,.024) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.024) 1px, transparent 1px);
-      background-size:72px 72px;
-      mask-image:radial-gradient(circle at center, black 30%, transparent 84%);
-      opacity:.16;
+        linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, black 28%, transparent 84%);
+      opacity: 0.18;
     }
 
-    body::after{
+    body::after {
       background:
-        radial-gradient(circle at 18% 18%, rgba(32,182,158,.12), transparent 14%),
-        radial-gradient(circle at 82% 26%, rgba(32,182,158,.07), transparent 12%),
-        radial-gradient(circle at 55% 54%, rgba(255,255,255,.03), transparent 36%);
-      filter:blur(44px);
-      opacity:.85;
+        radial-gradient(circle at 22% 16%, rgba(32, 182, 158, 0.14), transparent 16%),
+        radial-gradient(circle at 82% 26%, rgba(32, 182, 158, 0.08), transparent 14%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.025), transparent 40%);
+      filter: blur(42px);
+      opacity: 0.8;
     }
 
-    a{color:inherit;text-decoration:none}
-    .shell{position:relative;z-index:1}
-    .container{width:min(calc(100% - 56px),var(--max));margin:0 auto}
-
-    .header{
-      position:sticky;top:0;z-index:50;
-      background:linear-gradient(180deg, rgba(4,10,19,.82), rgba(7,17,31,.66));
-      border-bottom:1px solid rgba(255,255,255,.06);
-      backdrop-filter:blur(18px) saturate(130%);
-      -webkit-backdrop-filter:blur(18px) saturate(130%);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .header-inner{
-      min-height:90px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
+    .page-shell {
+      position: relative;
+      z-index: 1;
     }
 
-    .brand{
-      display:inline-flex;
-      align-items:center;
-      gap:15px;
-      flex-shrink:0;
-      min-width:0;
+    .container {
+      width: min(calc(100% - 56px), var(--max));
+      margin: 0 auto;
     }
 
-    .brand-mark{
-      width:54px;height:54px;border-radius:18px;
-      display:grid;place-items:center;
-      background:linear-gradient(180deg, #2fd7bc, #17917f);
-      box-shadow:0 18px 34px rgba(32,182,158,.22), inset 0 1px 0 rgba(255,255,255,.18);
-      position:relative;
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(5, 12, 22, 0.82), rgba(7, 17, 31, 0.66));
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
     }
 
-    .brand-mark svg{width:28px;height:28px;display:block}
-    .brand-text{display:flex;flex-direction:column;line-height:1.02}
-    .brand-name{font-size:24px;font-weight:800;color:var(--text-2);letter-spacing:.01em}
-    .brand-name .ai{color:#2bd3b8}
-    .brand-tag{margin-top:6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8ca0b4;white-space:nowrap}
-
-    .nav{
-      display:flex;align-items:center;gap:22px;
-      padding:10px 14px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.05);
-      background:rgba(255,255,255,.02);
-    }
-    .nav a,.dropbtn{
-      font-size:14px;font-weight:500;color:#98adc2;
-      transition:color .2s ease, opacity .2s ease;
-    }
-    .nav a:hover,.dropbtn:hover,.nav a.active{color:#fff}
-
-    .dropdown{position:relative}
-    .dropdown-content{
-      display:none;position:absolute;top:calc(100% + 14px);left:0;min-width:260px;
-      padding:10px 0;border-radius:18px;background:rgba(7,14,26,.96);
-      border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow-soft);
-      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-    }
-    .dropdown-content a{
-      display:block;margin:0 8px;padding:11px 16px;border-radius:12px;
-      white-space:nowrap;color:#d6e0ea;
-    }
-    .dropdown-content a:hover{background:rgba(255,255,255,.05);color:#fff}
-    .dropdown:hover .dropdown-content{display:block}
-
-    .hero{
-      padding:28px 0 18px;
-      position:relative;
+    .header-inner {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:minmax(0,1.12fr) minmax(380px,.88fr);
-      gap:28px;
-      align-items:stretch;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+      flex-shrink: 0;
     }
 
-    .hero-panel,.side-panel,.section-panel,.faq-item,.bottom-panel{
-      position:relative;overflow:hidden;border-radius:var(--r-xl);
+    .brand-mark {
+      position: relative;
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)),
-        linear-gradient(180deg, rgba(13,20,35,.92), rgba(8,14,26,.90));
-      border:1px solid rgba(255,255,255,.075);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(16px) saturate(125%);
-      -webkit-backdrop-filter:blur(16px) saturate(125%);
+        linear-gradient(180deg, rgba(44, 214, 186, 1), rgba(23, 145, 127, 1));
+      box-shadow:
+        0 16px 34px rgba(32, 182, 158, 0.24),
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        inset 0 -10px 18px rgba(0,0,0,0.16);
+      isolation: isolate;
     }
 
-    .hero-panel::before,.side-panel::before,.section-panel::before,.faq-item::before,.bottom-panel::before{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(255,255,255,.05), transparent 22%);
-      pointer-events:none;
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent 40%);
+      pointer-events: none;
+      mix-blend-mode: screen;
     }
 
-    .hero-panel{
-      padding:58px clamp(28px,4vw,66px);
-      min-height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:28px;
-      border-radius:40px;
+    .brand-mark svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+      position: relative;
+      z-index: 1;
     }
 
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 16px;border-radius:999px;
-      background:rgba(32,182,158,.09);
-      border:1px solid rgba(32,182,158,.18);
-      color:#7ef2df;font-size:.86rem;font-weight:800;letter-spacing:.04em;
-      text-transform:uppercase;width:fit-content;
-    }
-    .eyebrow::before{
-      content:"";width:8px;height:8px;border-radius:999px;
-      background:linear-gradient(180deg, #2fd7bc, #17917f);
-      box-shadow:0 0 0 7px rgba(32,182,158,.10);
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.02;
+      min-width: 0;
     }
 
-    h1,h2,h3,p{margin:0}
-    h1,h2,h3{line-height:1.02;letter-spacing:-.045em}
-    h1{
-      font-size:clamp(3.3rem,6vw,6.4rem);
-      color:var(--text-2);
-      max-width:10.8ch;
-      text-wrap:balance;
-      margin-top:18px;
-    }
-    .hero-copy{
-      max-width:58ch;
-      font-size:clamp(1.05rem,1.35vw,1.16rem);
-      color:#9dadbf;
-      margin-top:18px;
+    .brand-name {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: var(--text-strong);
     }
 
-    .hero-meta{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:14px;
-      margin-top:10px;
+    .brand-name .ai {
+      color: #2bd3b8;
     }
 
-    .meta-card{
-      padding:18px 18px 18px 22px;border-radius:18px;
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.022));
-      border:1px solid rgba(255,255,255,.08);
-      color:#dbe7f3;
-      position:relative;
-    }
-    .meta-card::before{
-      content:"";position:absolute;left:14px;top:20px;width:4px;height:calc(100% - 40px);
-      border-radius:999px;background:linear-gradient(180deg, rgba(32,182,158,.82), rgba(32,182,158,.12));
+    .brand-tagline {
+      font-size: 11px;
+      color: #8ea2b7;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      white-space: nowrap;
     }
 
-    .hero-actions,.panel-actions,.bottom-actions{
-      display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
-    .btn{
-      min-height:54px;padding:0 22px;border-radius:999px;
-      display:inline-flex;align-items:center;justify-content:center;
-      font-weight:800;font-size:.96rem;border:1px solid transparent;
-      transition:transform .22s ease, background .22s ease, border-color .22s ease, box-shadow .22s ease;
-      white-space:nowrap;
+    .nav a,
+    .dropbtn {
+      color: #98adc2;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.24s ease, opacity 0.24s ease;
     }
-    .btn:hover{transform:translateY(-1px)}
-    .btn-primary{
-      color:#fff;
-      background:linear-gradient(180deg, #28cab0, #17917f);
-      box-shadow:0 18px 34px rgba(32,182,158,.22), inset 0 1px 0 rgba(255,255,255,.14);
-    }
-    .btn-primary:hover{background:linear-gradient(180deg, #2dd6ba, #189a87)}
-    .btn-secondary{
-      color:#e7eef8;background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12);
-    }
-    .btn-secondary:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
 
-    .side-panel{
-      padding:26px;
-      border-radius:40px;
+    .nav a:hover,
+    .dropbtn:hover,
+    .nav a.active {
+      color: #ffffff;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 0;
+      min-width: 260px;
+      padding: 10px 0;
+      border-radius: 18px;
+      background: rgba(8, 16, 29, 0.96);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 11px 16px;
+      color: #d5e0eb;
+      white-space: nowrap;
+      margin: 0 8px;
+      border-radius: 12px;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    main {
+      position: relative;
+    }
+
+    .hero {
+      padding: 34px 0 24px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -60px;
+      transform: translateX(-50%);
+      width: min(1600px, calc(100% - 20px));
+      height: 760px;
+      border-radius: 44px;
       background:
-        radial-gradient(circle at 100% 0%, rgba(32,182,158,.18), transparent 28%),
-        linear-gradient(180deg, rgba(15,25,43,.98), rgba(8,14,26,.98));
-      border-color:rgba(32,182,158,.16);
-      box-shadow:0 40px 110px rgba(0,0,0,.46), 0 0 0 1px rgba(32,182,158,.05) inset;
+        radial-gradient(circle at 18% 16%, rgba(32,182,158,0.10), transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(32,182,158,0.07), transparent 18%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      border: 1px solid rgba(255,255,255,0.035);
+      opacity: 0.9;
+      pointer-events: none;
+      filter: blur(0.2px);
     }
 
-    .price-card{
-      height:100%;
-      padding:28px;
-      border-radius:30px;
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-      border:1px solid rgba(255,255,255,.08);
-      position:relative;
-      display:flex;flex-direction:column;justify-content:space-between;gap:24px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.24fr) minmax(380px, 0.76fr);
+      gap: 28px;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
     }
 
-    .price-label{
-      display:inline-flex;width:fit-content;
-      padding:9px 13px;border-radius:999px;
-      background:rgba(32,182,158,.10);border:1px solid rgba(32,182,158,.18);
-      color:#8cf4e4;font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-    }
-
-    .price{
-      font-size:clamp(3.4rem,5vw,5.4rem);
-      font-weight:900;letter-spacing:-.08em;line-height:.92;color:#fff;margin-top:18px;
-    }
-    .price small{
-      font-size:1rem;color:#9eb2c5;font-weight:700;letter-spacing:0;margin-left:8px;
-    }
-    .price-sub{
-      margin-top:12px;color:#9eb2c5;max-width:36ch;
-    }
-
-    .price-list{
-      list-style:none;padding:0;margin:0;display:grid;gap:12px;
-    }
-    .price-list li{
-      position:relative;padding-left:30px;color:#dfe8f1;
-    }
-    .price-list li::before{
-      content:"";position:absolute;left:0;top:10px;width:10px;height:10px;border-radius:999px;
-      background:linear-gradient(180deg, #2fd7bc, #17917f);
-      box-shadow:0 0 0 6px rgba(32,182,158,.10);
-    }
-
-    .section{padding:34px 0;position:relative}
-    .section-head{
-      display:flex;justify-content:space-between;gap:24px;align-items:end;
-      margin-bottom:22px;
-    }
-    .section-head h2{
-      font-size:clamp(2rem,3vw,3.5rem);
-      color:var(--text-2);
-      max-width:12ch;
-      text-wrap:balance;
-    }
-    .section-head p{
-      color:#98adbf;max-width:60ch;font-size:1.02rem;
-    }
-
-    .feature-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:22px;
-    }
-
-    .section-panel{
-      padding:30px;
-      border-radius:32px;
+    .panel,
+    .card,
+    .faq-item,
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
       background:
-        radial-gradient(circle at top right, rgba(255,255,255,.035), transparent 26%),
-        linear-gradient(180deg, rgba(12,19,34,.93), rgba(8,14,26,.90));
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)),
+        linear-gradient(180deg, rgba(11, 19, 33, 0.88), rgba(8, 15, 27, 0.86));
+      border: 1px solid rgba(255,255,255,0.075);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
     }
 
-    .feature-list{
-      display:grid;
-      gap:14px;
-      grid-template-columns:repeat(2,minmax(0,1fr));
+    .panel::before,
+    .card::before,
+    .faq-item::before,
+    .final-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent 24%);
+      pointer-events: none;
     }
-    .feature{
-      padding:22px 22px 22px 22px;border-radius:20px;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.017));
-      border:1px solid rgba(255,255,255,.08);
-      min-height:100%;
-    }
-    .feature h3{font-size:1.08rem;color:#fff;margin-bottom:10px}
-    .feature p{color:#99afc1}
 
-    .showcase{
-      display:grid;
-      gap:14px;
+    .panel::after,
+    .card::after,
+    .faq-item::after,
+    .final-cta::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -50% auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(32,182,158,0.08), transparent 68%);
+      pointer-events: none;
+      filter: blur(10px);
     }
-    .show-card{
-      padding:22px;border-radius:20px;
-      background:linear-gradient(180deg, rgba(255,255,255,.042), rgba(255,255,255,.018));
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .show-card strong{
-      display:block;color:#fff;font-size:1rem;margin-bottom:8px
-    }
-    .show-card span{color:#9badbe}
 
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
+    .hero-copy {
+      padding: 58px clamp(28px, 4vw, 64px);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      border-radius: var(--radius-xl);
     }
-    .step{
-      padding:26px 24px;
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .step-no{
-      width:48px;height:48px;border-radius:999px;
-      display:grid;place-items:center;
-      background:rgba(32,182,158,.10);
-      border:1px solid rgba(32,182,158,.16);
-      color:#7bf1de;font-weight:800;margin-bottom:16px;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
-    }
-    .step h3{font-size:1.12rem;color:#fff;margin-bottom:10px}
-    .step p{color:#98adbf}
 
-    .faq{
-      display:grid;gap:14px;
+    .hero-top {
+      max-width: 860px;
     }
-    .faq-item{
-      padding:24px 26px;border-radius:24px;
-    }
-    .faq-item h3{font-size:1.06rem;color:#fff;margin-bottom:8px}
-    .faq-item p{color:#9aadbd}
 
-    .bottom-panel{
-      padding:34px 34px;
-      margin:18px 0 76px;
-      border-radius:32px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:24px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(32, 182, 158, 0.09);
+      border: 1px solid rgba(32, 182, 158, 0.18);
+      color: #79f2df;
+      font-size: 0.87rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 22px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        0 10px 24px rgba(0,0,0,0.14);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #2ad2b7, #17917f);
+      box-shadow: 0 0 0 7px rgba(32,182,158,0.10);
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 5.8vw, 6rem);
+      max-width: 11ch;
+      color: var(--text-strong);
+      text-wrap: balance;
+      margin-bottom: 20px;
+    }
+
+    .lead {
+      font-size: clamp(1.04rem, 1.4vw, 1.16rem);
+      color: #9eb3c6;
+      max-width: 64ch;
+      margin-bottom: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 2px;
+    }
+
+    .hero-points div {
+      position: relative;
+      min-height: 100%;
+      padding: 18px 18px 18px 22px;
+      border-radius: 18px;
       background:
-        radial-gradient(circle at 0% 50%, rgba(32,182,158,.14), transparent 22%),
-        linear-gradient(180deg, rgba(12,19,34,.95), rgba(8,14,26,.95));
-    }
-    .bottom-panel h2{
-      font-size:clamp(1.85rem,2.7vw,2.95rem);
-      color:#fff;
-      max-width:18ch;
-      text-wrap:balance;
-    }
-    .bottom-panel p{
-      margin-top:12px;color:#98adbf;max-width:62ch;
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #dce7f3;
+      font-size: 0.97rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
     }
 
-    footer{
-      padding:0 0 42px;
-      color:#7f95aa;
-      font-size:.95rem;
+    .hero-points div::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 22px;
+      width: 4px;
+      height: calc(100% - 44px);
+      min-height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(32,182,158,0.82), rgba(32,182,158,0.14));
     }
 
-    .section-wide{
-      padding-left:0;padding-right:0;
+    .offer-card {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at top right, rgba(32,182,158,0.16), transparent 28%),
+        linear-gradient(180deg, rgba(15, 24, 42, 0.96), rgba(8, 15, 27, 0.98));
+      border: 1px solid rgba(32,182,158,0.16);
+      box-shadow:
+        0 36px 100px rgba(0,0,0,0.42),
+        0 0 0 1px rgba(32,182,158,0.05) inset,
+        0 0 48px rgba(32,182,158,0.08);
     }
 
-    @media (max-width: 1160px){
-      .hero-grid,.feature-grid{
-        grid-template-columns:1fr;
+    .offer-shell {
+      position: relative;
+      min-height: 100%;
+      padding: 26px;
+      border-radius: calc(var(--radius-xl) - 8px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.032), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .offer-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 78% 14%, rgba(32,182,158,0.12), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.035), transparent 28%);
+      pointer-events: none;
+    }
+
+    .price-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(32,182,158,0.10);
+      border: 1px solid rgba(32,182,158,0.18);
+      color: #8df4e4;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .price-wrap {
+      padding: 2px 0 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 18px;
+    }
+
+    .price {
+      font-size: clamp(3.4rem, 5vw, 5.2rem);
+      font-weight: 900;
+      letter-spacing: -0.075em;
+      line-height: 0.94;
+      color: #ffffff;
+      margin-bottom: 10px;
+      text-wrap: balance;
+    }
+
+    .price small {
+      display: inline-block;
+      font-size: 1rem;
+      color: #9fb2c4;
+      font-weight: 700;
+      letter-spacing: 0;
+      margin-left: 8px;
+    }
+
+    .price-note {
+      color: #9eb2c5;
+      max-width: 36ch;
+    }
+
+    .offer-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 13px;
+    }
+
+    .offer-card li {
+      position: relative;
+      padding-left: 30px;
+      color: #dce7f2;
+    }
+
+    .offer-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #2ad2b7, #17917f);
+      box-shadow: 0 0 0 6px rgba(32,182,158,0.10);
+    }
+
+    .offer-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .cta,
+    .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.96rem;
+      transition:
+        transform 0.24s ease,
+        background 0.24s ease,
+        border-color 0.24s ease,
+        box-shadow 0.24s ease,
+        color 0.24s ease;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .cta:hover,
+    .cta-secondary:hover {
+      transform: translateY(-1px);
+    }
+
+    .cta {
+      color: #ffffff;
+      background: linear-gradient(180deg, #25c7ad, #17917f);
+      box-shadow:
+        0 18px 36px rgba(32,182,158,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.14);
+    }
+
+    .cta:hover {
+      background: linear-gradient(180deg, #2cd5ba, #189b88);
+      box-shadow:
+        0 22px 42px rgba(32,182,158,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+
+    .cta-secondary {
+      border-color: rgba(255,255,255,0.12);
+      color: #e7eef8;
+      background: rgba(255,255,255,0.035);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .cta-secondary:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .section {
+      padding: var(--section-space) 0;
+      position: relative;
+    }
+
+    .section .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header {
+      max-width: 74ch;
+      margin-bottom: 24px;
+      padding: 0 2px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2.1rem, 3vw, 3.35rem);
+      color: var(--text-strong);
+      margin-bottom: 12px;
+      text-wrap: balance;
+    }
+
+    .section-header p {
+      color: #96aabc;
+      font-size: 1.03rem;
+      max-width: 68ch;
+    }
+
+    .grid-3,
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      padding: 30px 28px;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.035), transparent 28%),
+        linear-gradient(180deg, rgba(14, 22, 38, 0.92), rgba(9, 15, 27, 0.90));
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      color: #f8fafc;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li,
+    .faq-item p {
+      color: #97adbf;
+    }
+
+    .card ul {
+      padding-left: 18px;
+      margin: 12px 0 0;
+    }
+
+    .steps .card {
+      padding-top: 26px;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(32,182,158,0.10);
+      border: 1px solid rgba(32,182,158,0.18);
+      color: #79f2df;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 18px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        0 10px 22px rgba(0,0,0,0.14);
+    }
+
+    .faq {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      padding: 24px 26px;
+      border-radius: 22px;
+    }
+
+    .faq-item h3 {
+      font-size: 1.07rem;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+
+    .final-cta {
+      padding: 36px 38px;
+      margin: 18px 0 78px;
+      border-radius: var(--radius-xl);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      background:
+        radial-gradient(circle at 8% 50%, rgba(32,182,158,0.14), transparent 20%),
+        linear-gradient(180deg, rgba(15, 24, 41, 0.96), rgba(9, 16, 29, 0.96));
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .final-cta h2 {
+      color: #f8fafc;
+      font-size: clamp(1.9rem, 2.8vw, 2.9rem);
+      max-width: 20ch;
+      text-wrap: balance;
+    }
+
+    .final-cta p {
+      color: #97adbf;
+      margin-top: 12px;
+      max-width: 64ch;
+    }
+
+    footer {
+      padding: 0 0 44px;
+      color: #7f95aa;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1180px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
       }
-      .hero-meta,.feature-list,.steps{
-        grid-template-columns:1fr;
+
+      .hero-copy {
+        gap: 26px;
       }
-      .section-head{
-        flex-direction:column;align-items:start;
+
+      .offer-card {
+        max-width: 820px;
       }
-      .bottom-panel{
-        display:grid;grid-template-columns:1fr;align-items:start;
+
+      .hero-points,
+      .grid-3,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .final-cta {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
       }
     }
 
-    @media (max-width: 920px){
-      .container{width:min(calc(100% - 24px),var(--max))}
-      .nav{display:none}
-      .header-inner{min-height:82px}
-      .hero{padding-top:18px}
-      .hero-panel,.side-panel,.section-panel,.faq-item,.bottom-panel{border-radius:26px}
-      .hero-panel{padding:30px 22px}
-      .side-panel{padding:16px}
-      .price-card{padding:22px}
-      .section{padding:28px 0}
-      .section-panel{padding:22px}
-      .bottom-panel{padding:24px 22px;margin-bottom:58px}
-      h1{max-width:100%}
-      .price{font-size:clamp(2.8rem,12vw,4rem)}
-      .bottom-actions,.panel-actions{width:100%}
-      .btn{width:100%}
+    @media (max-width: 920px) {
+      :root {
+        --section-space: 32px;
+        --header-height: 82px;
+      }
+
+      .container {
+        width: min(calc(100% - 24px), var(--max));
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 18px;
+      }
+
+      .hero::before {
+        width: calc(100% - 12px);
+        top: -40px;
+        height: 640px;
+        border-radius: 30px;
+      }
+
+      .hero-copy,
+      .offer-card,
+      .card,
+      .faq-item,
+      .final-cta {
+        border-radius: 24px;
+      }
+
+      .hero-copy {
+        padding: 30px 22px;
+      }
+
+      .offer-card {
+        padding: 16px;
+      }
+
+      .offer-shell {
+        padding: 22px;
+      }
+
+      .card,
+      .faq-item,
+      .final-cta {
+        padding: 24px 22px;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .brand-tagline {
+        white-space: normal;
+      }
+
+      .offer-actions {
+        flex-direction: column;
+      }
+
+      .offer-actions .cta,
+      .offer-actions .cta-secondary,
+      .final-cta .cta {
+        width: 100%;
+      }
     }
 
-    @media (max-width: 640px){
-      .brand-mark{width:48px;height:48px;border-radius:15px}
-      .brand-name{font-size:22px}
-      .brand-tag{white-space:normal}
-      .hero-copy{font-size:1rem}
-      .hero-panel{gap:22px}
-      .eyebrow{font-size:.78rem}
+    @media (max-width: 640px) {
+      body::before {
+        background-size: 52px 52px;
+        opacity: 0.14;
+      }
+
+      .brand {
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+      }
+
+      .brand-name {
+        font-size: 22px;
+      }
+
+      .hero-copy {
+        gap: 22px;
+      }
+
+      .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      .lead {
+        font-size: 1rem;
+      }
+
+      .price {
+        font-size: clamp(2.9rem, 13vw, 4rem);
+      }
+
+      .final-cta {
+        margin-bottom: 60px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header class="header">
+  <div class="page-shell">
+    <header class="site-header">
       <div class="container header-inner">
         <a href="index.html" class="brand" aria-label="TurnAI kezdőlap">
           <div class="brand-mark">
@@ -486,14 +909,14 @@
               <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
               <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
               <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-              ircle cx="34" cy="14" r="3.5" fill="#0F172A"/>
-              ircle cx="29" cy="24" r="3.5" fill="#0F172A"/>
-              ircle cx="25" cy="34" r="3.5" fill="#0F172A"/>
+              <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
+              <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
+              <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
             </svg>
           </div>
           <div class="brand-text">
             <span class="brand-name">Turn<span class="ai">AI</span></span>
-            <span class="brand-tag">automatizáció · integráció · ai chat</span>
+            <span class="brand-tagline">automatizáció · integráció · ai chat</span>
           </div>
         </a>
 
@@ -517,44 +940,46 @@
     <main>
       <section class="hero">
         <div class="container hero-grid">
-          <div class="hero-panel">
-            <div>
-              <div class="eyebrow">Prémium weboldali AI chat</div>
-              <h1>AI megoldás, ami éjjel-nappal fogadja az érdeklődőket</h1>
-              <p class="hero-copy">Egy letisztult, gyorsan bevezethető weboldali AI chat, amely a gyakori kérdésekre válaszol, segíti az első kapcsolatfelvételt, és prémium benyomást ad a látogatóknak.</p>
+          <div class="hero-copy panel">
+            <div class="hero-top">
+              <div class="eyebrow">Belépő ajánlat weboldali AI chathez</div>
+              <h1>Weboldali AI chat már 19 990 Ft / hó ártól</h1>
+              <p class="lead">Egyszerű, gyorsan bevezethető megoldás vállalkozásoknak, ha szeretnél automatikus válaszadást a gyakori kérdésekre és jobb érdeklődőkezelést a weboldaladon.</p>
             </div>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#ajanlat">Kérek ajánlatot</a>
-              <a class="btn btn-secondary" href="#hogyan-mukodik">Hogyan működik?</a>
+              <a class="cta" href="#ajanlat">Kérek ajánlatot</a>
             </div>
 
-            <div class="hero-meta">
-              <div class="meta-card">Gyors bevezetés, tiszta folyamat, minimális súrlódás.</div>
-              <div class="meta-card">Alapvető kérdések, érdeklődők és kapcsolatfelvétel egy felületen.</div>
-              <div class="meta-card">Belépő csomag vállalkozásoknak, akik bizalmat és gyors reakciót akarnak.</div>
+            <div class="hero-points">
+              <div>Gyakori kérdések automatikus megválaszolása</div>
+              <div>Érdeklődők fogadása akkor is, ha nem vagy elérhető</div>
+              <div>Gyors indulás, rövid és átlátható bevezetés</div>
             </div>
           </div>
 
-          <aside class="side-panel" id="ajanlat">
-            <div class="price-card">
+          <aside class="offer-card panel" id="ajanlat">
+            <div class="offer-shell">
               <div>
-                <div class="price-label">Belépő ajánlat</div>
-                <div class="price">19 990 Ft <small>/ hó</small></div>
-                <p class="price-sub">Egy egyszerű, elegáns és hatékony AI chat megoldás weboldalra.</p>
+                <div class="price-label">Kiemelt ajánlat</div>
+
+                <div class="price-wrap">
+                  <p class="price">19 990 Ft <small>/ hó</small></p>
+                  <p class="price-note">Belépő csomag egy sima AI chat megoldáshoz weboldalra.</p>
+                </div>
+
+                <ul>
+                  <li>Alap weboldali AI chat</li>
+                  <li>Gyakori kérdések kezelése</li>
+                  <li>Érdeklődők fogadása</li>
+                  <li>Alap kapcsolatfelvételi adatok bekérése</li>
+                  <li>Továbbítás egyeztetésre, ha szükséges</li>
+                </ul>
               </div>
 
-              <ul class="price-listst">
-                >Gyakori kérdések automatikus megválaszolása</l/li>
-                >Érdeklődők fogadása akkor is, ha nem vagy elérhető</l/li>
-                >Alap kapcsolatfelvételi adatok bekérése</l/li>
-                >Gyors indulás, átlátható bevezetés</l/li>
-                >Továbbítás egyeztetésre, ha szükséges</li>
-              </ul>
-
-              <div class="panel-actions">
-                <a class="btn btn-primary" href="mailto:hello@turnai.hu?subject=AI%20chat%20ajanlat">Kérek ajánlatot</a>
-                <a class="btn btn-secondary" href="./index.html">Vissza a főoldalra</a>
+              <div class="offer-actions">
+                <a class="cta" href="mailto:hello@turnai.hu?subject=AI%20chat%20ajanlat">Kérek ajánlatot</a>
+                <a class="cta-secondary" href="./index.html">Vissza a főoldalra</a>
               </div>
             </div>
           </aside>
@@ -563,75 +988,22 @@
 
       <section class="section">
         <div class="container">
-          <div class="section-head">
-            <h2>Miért működik jól?</h2>
-            <p>Ez az oldal nem egy általános chatbot bemutató. Olyan üzleti logikára épül, amely egyszerre kommunikálja a gyors bevezetést, a bizalmat és a prémium technológiai érzetet.</p>
+          <div class="section-header">
+            <h2>Mit tartalmaz a sima AI chat?</h2>
+            <p>Röviden: egy alap weboldali chatbot, ami leveszi rólad a leggyakoribb kérdéseket és segít abban, hogy kevesebb érdeklődő vesszen el.</p>
           </div>
-
-          <div class="feature-grid">
-            <div class="section-panel">
-              <div class="feature-list">
-                <article class="feature">
-                  <h3>Éles üzleti fókusz</h3>
-                  <p>Nem csak technológiai élmény, hanem konkrét segítség a weboldali megkeresések kezelésében.</p>
-                </article>
-                <article class="feature">
-                  <h3>Gyors indulás</h3>
-                  <p>Belépő csomagként könnyen bevezethető, ezért kevés a döntési súrlódás az ügyfél oldalán.</p>
-                </article>
-                <article class="feature">
-                  <h3>Prémium benyomás</h3>
-                  <p>A látogatók egy modern, rendezett és magabiztos digitális felülettel találkoznak.</p>
-                </article>
-                <article class="feature">
-                  <h3>Skálázható alap</h3>
-                  <p>A megoldás később könnyen bővíthető összetettebb automatizálási irányok felé.</p>
-                </article>
-              </div>
-            </div>
-
-            <div class="section-panel">
-              <div class="showcase">
-                <div class="show-card">
-                  <strong>Mit kap a látogató?</strong>
-                  <span>Gyors válasz, tiszta útmutatás és egyszerű kapcsolatfelvételi élmény.</span>
-                </div>
-                <div class="show-card">
-                  <strong>Mit kap az üzlet?</strong>
-                  <span>Kevesebb elveszett érdeklődő, hatékonyabb első reakció, jobb konverziós alap.</span>
-                </div>
-                <div class="show-card">
-                  <strong>Mit kap a márka?</strong>
-                  <span>Komoly, modern és bizalomépítő digitális arculat.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="hogyan-mukodik">
-        <div class="container">
-          <div class="section-head">
-            <h2>Hogyan épül fel?</h2>
-            <p>A folyamat egyszerű, mégis professzionális: először a célokat tisztázzuk, aztán összeáll a működés, végül élesedik a megoldás.</p>
-          </div>
-
-          <div class="steps">
-            <article class="step">
-              <div class="step-no">01</div>
-              <h3>Egyeztetés</h3>
-              <p>Átbeszéljük, milyen kérdésekre válaszoljon a chat, és milyen üzleti célt támogasson a weboldalon.</p>
+          <div class="grid-3">
+            <article class="card">
+              <h3>Automatikus válaszadás</h3>
+              <p>Megválaszolja a gyakori kérdéseket, például szolgáltatásokkal, működéssel vagy alap információkkal kapcsolatban.</p>
             </article>
-            <article class="step">
-              <div class="step-no">02</div>
-              <h3>Beállítás</h3>
-              <p>Felépül a kérdéslogika, az alap válaszstruktúra és a kapcsolatfelvételi folyamat.</p>
+            <article class="card">
+              <h3>Érdeklődők fogadása</h3>
+              <p>Fogadja a látogatók első üzeneteit akkor is, amikor épp nem vagy elérhető, és segít elindítani a kapcsolatfelvételt.</p>
             </article>
-            <article class="step">
-              <div class="step-no">03</div>
-              <h3>Indulás</h3>
-              <p>A weboldali AI chat élesedik, és már az első látogatóktól kezdve támogatja az értékesítést.</p>
+            <article class="card">
+              <h3>Alap adatbekérés</h3>
+              <p>Elkéri a legfontosabb adatokat, például nevet, e-mail címet, telefonszámot vagy rövid igényt.</p>
             </article>
           </div>
         </div>
@@ -639,23 +1011,70 @@
 
       <section class="section">
         <div class="container">
-          <div class="section-head">
-            <h2>Gyakori kérdések</h2>
-            <p>Rövid, egyértelmű válaszok azoknak, akik gyorsan szeretnék megérteni a szolgáltatás lényegét.</p>
+          <div class="section-header">
+            <h2>Röviden összefoglalva</h2>
+            <p>Ez a csomag azoknak jó, akik egy gyorsan bevezethető, belépő szintű AI chat megoldást szeretnének a weboldalukra.</p>
           </div>
+          <div class="grid-3">
+            <article class="card">
+              <h3>Mire jó?</h3>
+              <p>Segít válaszolni az alap kérdésekre és javítja a weboldalon érkező érdeklődők kezelését.</p>
+            </article>
+            <article class="card">
+              <h3>Mire nem való?</h3>
+              <p>Ez még nem teljes folyamat- vagy CRM-automatizálás, hanem egy egyszerűbb induló megoldás.</p>
+            </article>
+            <article class="card">
+              <h3>Kinek ajánlott?</h3>
+              <p>Kis- és középvállalkozásoknak, akik szeretnének gyorsabban reagálni a weboldali megkeresésekre.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Hogyan indul el?</h2>
+            <p>Egyszerű folyamat, felesleges bonyolítás nélkül.</p>
+          </div>
+          <div class="steps">
+            <article class="card">
+              <div class="step-number">1</div>
+              <h3>Egyeztetés</h3>
+              <p>Átbeszéljük, milyen kérdésekre válaszoljon a chat, és milyen célra használod a weboldalon.</p>
+            </article>
+            <article class="card">
+              <div class="step-number">2</div>
+              <h3>Beállítás</h3>
+              <p>Összerakjuk az alap működést, a kérdésköröket és a kapcsolatfelvételi logikát.</p>
+            </article>
+            <article class="card">
+              <div class="step-number">3</div>
+              <h3>Indulás</h3>
+              <p>Elindul a weboldali AI chat, és segít az első érdeklődők kezelésében.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Gyakori kérdések</h2>
+          </div>
           <div class="faq">
             <div class="faq-item">
-              <h3>Mit jelent pontosan a weboldali AI chat?</h3>
-              <p>Egy olyan beágyazott chatbotot, amely a gyakori kérdésekre válaszol, és segít az első kapcsolatfelvételben.</p>
+              <h3>Mit jelent a sima AI chat?</h3>
+              <p>Egy alap weboldali chatbotot, ami automatikusan válaszol a gyakori kérdésekre és fogadja az érdeklődőket.</p>
             </div>
             <div class="faq-item">
-              <h3>Kiknek ajánlott ez a megoldás?</h3>
-              <p>Vállalkozásoknak, amelyek gyorsabban szeretnének reagálni a weboldali érdeklődésekre és jobb benyomást akarnak kelteni.</p>
+              <h3>Ez tartalmaz teljes automatizálást is?</h3>
+              <p>Nem. Ez egy belépő szintű csomag, ami a weboldali chat funkcióra koncentrál.</p>
             </div>
             <div class="faq-item">
-              <h3>Bővíthető később?</h3>
-              <p>Igen, ez egy belépő szintű alap, amely később összetettebb automatizálási irányokkal is kiegészíthető.</p>
+              <h3>Később lehet bővíteni?</h3>
+              <p>Igen, ha később összetettebb folyamatokra vagy integrációkra van szükség, továbbfejleszthető a megoldás.</p>
             </div>
           </div>
         </div>
@@ -663,22 +1082,19 @@
 
       <section class="section">
         <div class="container">
-          <div class="bottom-panel">
+          <div class="final-cta">
             <div>
-              <h2>Ha egy prémium, gyorsan bevezethető AI chat megoldást keresel, ez egy erős induló pont.</h2>
-              <p>Letisztult belépő ajánlat, amely egyszerre támogatja a válaszadást, az érdeklődőkezelést és a bizalomépítést.</p>
+              <h2>Ha szeretnél egy egyszerűen induló weboldali AI chatet, ez egy jó belépő ajánlat.</h2>
+              <p>Átlátható induló csomag, egy konkrét célra: gyorsabb válaszadás és jobb érdeklődőkezelés.</p>
             </div>
-            <div class="bottom-actions">
-              <a class="btn btn-primary" href="mailto:hello@turnai.hu?subject=AI%20chat%20ajanlat">Kérek ajánlatot</a>
-              <a class="btn btn-secondary" href="index.html">Kezdőlap</a>
-            </div>
+            <a class="cta" href="mailto:hello@turnai.hu?subject=AI%20chat%20ajanlat">Kérek ajánlatot</a>
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <div class="container">TurnAI • Weboldali AI chat • Prémium statikus HTML</div>
+      <div class="container">TurnAI • Árazás oldal • GitHub Pages kompatibilis statikus HTML</div>
     </footer>
   </div>
 </body>
