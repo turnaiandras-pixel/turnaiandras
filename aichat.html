@@ -13,29 +13,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI chat cégeknek | TurnAI</title>
-  <meta name="description" content="Prémium AI chat megoldások cégeknek: weboldali AI asszisztensek, ügyfélkommunikáció automatizálás, tudásbázis-alapú válaszadás és üzleti folyamatok támogatása." />
+  <meta name="description" content="Letisztult, prémium AI chat megoldások cégeknek: gyorsabb ügyfélkiszolgálás, jobb információátadás és skálázható digitális ügyfélélmény." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  //fonts.googleapis.com">
+  //fonts.gstatic.com" crossorigin>
+  //fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#0f172a;
-      --bg-soft:#111c33;
-      --panel:rgba(19, 30, 51, 0.72);
-      --panel-strong:rgba(21, 32, 56, 0.92);
-      --border:rgba(255,255,255,0.09);
-      --border-strong:rgba(94,234,212,0.20);
+      --bg-soft:#142033;
+      --panel:rgba(17, 25, 40, 0.72);
+      --panel-strong:rgba(20, 29, 47, 0.92);
+      --border:rgba(255,255,255,0.08);
+      --border-soft:rgba(255,255,255,0.05);
       --text:#f8fafc;
       --muted:#94a3b8;
       --soft:#cbd5e1;
       --accent:#20b69e;
-      --accent-2:#5eead4;
-      --glow:0 0 0 1px rgba(94,234,212,0.08), 0 20px 60px rgba(0,0,0,0.35);
-      --radius:28px;
-      --radius-sm:18px;
-      --container:1440px;
+      --accent-soft:#5eead4;
+      --shadow:0 18px 50px rgba(2, 6, 23, 0.32);
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --radius-md:16px;
+      --container:1280px;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
@@ -43,35 +44,34 @@
     body{
       font-family:'Inter',sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(32,182,158,0.12), transparent 28%),
-        radial-gradient(circle at 85% 10%, rgba(56,189,248,0.08), transparent 24%),
-        linear-gradient(180deg, #0f172a 0%, #0b1223 100%);
+        radial-gradient(circle at top left, rgba(32,182,158,0.08), transparent 24%),
+        linear-gradient(180deg, #0f172a 0%, #0c1424 100%);
       color:var(--text);
-      line-height:1.75;
+      line-height:1.65;
       overflow-x:hidden;
     }
 
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
     button{font:inherit}
+    img{max-width:100%;display:block}
 
     .shell{
       width:min(var(--container), 100%);
       margin:0 auto;
-      padding-inline:clamp(18px, 3vw, 40px);
+      padding-inline:clamp(18px, 3vw, 36px);
     }
 
     .site-header{
       position:sticky;
       top:0;
       z-index:1000;
-      backdrop-filter:blur(18px);
-      background:rgba(15, 23, 42, 0.72);
-      border-bottom:1px solid rgba(255,255,255,0.06);
+      backdrop-filter:blur(14px);
+      background:rgba(15,23,42,0.78);
+      border-bottom:1px solid var(--border-soft);
     }
 
     .header-inner{
-      min-height:84px;
+      min-height:76px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -86,37 +86,37 @@
     }
 
     .brand-mark{
-      width:48px;
-      height:48px;
-      border-radius:15px;
-      background:linear-gradient(180deg, #27d3b5, #17917f);
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:linear-gradient(180deg, #28ccb0, #17917f);
       display:flex;
       align-items:center;
       justify-content:center;
-      box-shadow:0 12px 30px rgba(32,182,158,0.22);
+      box-shadow:0 12px 28px rgba(32,182,158,0.18);
       flex-shrink:0;
     }
 
-    .brand-mark svg{width:26px;height:26px}
+    .brand-mark svg{width:24px;height:24px}
     .brand-text{display:flex;flex-direction:column;line-height:1.05}
-    .brand-name{font-weight:800;font-size:1.35rem;letter-spacing:-0.03em}
-    .brand-name .ai{color:var(--accent-2)}
+    .brand-name{font-size:1.2rem;font-weight:800;letter-spacing:-0.03em}
+    .brand-name .ai{color:var(--accent-soft)}
     .brand-tagline{
       margin-top:4px;
       font-size:.72rem;
-      text-transform:uppercase;
-      letter-spacing:.14em;
       color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
     }
 
     .nav{
       display:flex;
       align-items:center;
-      gap:22px;
+      gap:20px;
     }
 
     .nav a{
-      font-size:.96rem;
+      font-size:.95rem;
       color:var(--muted);
       transition:.25s ease;
     }
@@ -125,402 +125,330 @@
 
     .menu-toggle{
       display:none;
-      width:46px;
-      height:46px;
+      width:44px;
+      height:44px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.12);
       background:transparent;
       color:#fff;
       cursor:pointer;
     }
 
     .hero{
-      position:relative;
-      padding:clamp(72px, 10vw, 140px) 0 56px;
+      padding:72px 0 44px;
     }
 
-    .hero-grid{
+    .hero-panel{
       display:grid;
       grid-template-columns:1.2fr .8fr;
-      gap:28px;
+      gap:22px;
       align-items:stretch;
     }
 
     .hero-copy,
-    .hero-side,
-    .glass-card,
-    .cta-panel,
-    .timeline-card{
+    .hero-aside,
+    .card,
+    .cta-panel{
       background:var(--panel);
       border:1px solid var(--border);
-      box-shadow:var(--glow);
-      backdrop-filter:blur(18px);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
     }
 
     .hero-copy{
-      border-radius:36px;
-      padding:clamp(28px, 4vw, 56px);
-      min-height:100%;
+      border-radius:32px;
+      padding:clamp(26px, 4vw, 44px);
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      padding:10px 14px;
+      padding:8px 12px;
       border-radius:999px;
       border:1px solid rgba(94,234,212,0.18);
-      background:rgba(94,234,212,0.07);
-      color:var(--accent-2);
+      background:rgba(94,234,212,0.06);
+      color:var(--accent-soft);
+      font-size:.82rem;
       font-weight:700;
-      font-size:.9rem;
-      margin-bottom:24px;
+      letter-spacing:.02em;
+      margin-bottom:18px;
     }
 
     h1{
-      font-size:clamp(2.6rem, 6vw, 5.6rem);
-      line-height:0.98;
-      letter-spacing:-0.06em;
-      font-weight:900;
+      font-size:clamp(2rem, 3.8vw, 3rem);
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      font-weight:800;
       max-width:12ch;
-      margin-bottom:24px;
+      margin-bottom:18px;
     }
 
     .hero-lead{
-      font-size:clamp(1.08rem, 1.5vw, 1.28rem);
       color:var(--soft);
-      max-width:62ch;
-      margin-bottom:18px;
+      font-size:1.03rem;
+      max-width:58ch;
+      margin-bottom:12px;
     }
 
     .hero-sub{
       color:var(--muted);
-      font-size:1.02rem;
-      max-width:62ch;
+      font-size:.98rem;
+      max-width:58ch;
     }
 
     .hero-actions{
       display:flex;
       flex-wrap:wrap;
-      gap:14px;
-      margin-top:34px;
+      gap:12px;
+      margin-top:26px;
     }
 
     .btn{
+      min-height:50px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      min-height:54px;
-      padding:0 22px;
-      border-radius:16px;
+      padding:0 18px;
+      border-radius:14px;
+      font-size:.95rem;
       font-weight:700;
-      transition:.28s ease;
-      position:relative;
+      transition:.25s ease;
     }
 
     .btn-primary{
-      color:#06131a;
-      background:linear-gradient(135deg, #5eead4 0%, #20b69e 48%, #11998e 100%);
-      box-shadow:0 18px 40px rgba(32,182,158,0.28);
+      background:linear-gradient(135deg, #65ecd8, #20b69e);
+      color:#082129;
+      box-shadow:0 14px 30px rgba(32,182,158,0.24);
     }
 
     .btn-primary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 24px 48px rgba(32,182,158,0.34);
+      transform:translateY(-1px);
+      box-shadow:0 18px 34px rgba(32,182,158,0.30);
     }
 
     .btn-secondary{
-      color:var(--text);
-      border:1px solid rgba(255,255,255,0.12);
       background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.10);
+      color:var(--text);
     }
 
     .btn-secondary:hover{
-      background:rgba(255,255,255,0.06);
-      border-color:rgba(255,255,255,0.18);
+      background:rgba(255,255,255,0.05);
     }
 
-    .hero-side{
-      border-radius:36px;
-      padding:26px;
+    .hero-aside{
+      border-radius:32px;
+      padding:20px;
       display:grid;
-      gap:18px;
+      gap:14px;
     }
 
-    .metric{
-      padding:22px;
-      border-radius:22px;
+    .mini-card{
+      padding:18px;
+      border-radius:18px;
       background:rgba(255,255,255,0.03);
       border:1px solid rgba(255,255,255,0.06);
     }
 
-    .metric-label{
+    .mini-card span{
+      display:block;
       color:var(--muted);
-      font-size:.85rem;
+      font-size:.76rem;
       text-transform:uppercase;
       letter-spacing:.12em;
-      margin-bottom:10px;
-    }
-
-    .metric strong{
-      display:block;
-      font-size:1.6rem;
-      line-height:1.1;
-      letter-spacing:-0.04em;
       margin-bottom:8px;
     }
 
-    .metric span{
+    .mini-card strong{
+      display:block;
+      font-size:1.05rem;
+      line-height:1.35;
+      margin-bottom:6px;
+      font-weight:700;
+    }
+
+    .mini-card p{
       color:var(--soft);
-      font-size:.97rem;
+      font-size:.94rem;
+      line-height:1.6;
     }
 
     .section{
-      padding:clamp(42px, 7vw, 96px) 0;
+      padding:56px 0;
     }
 
-    .section-header{
+    .section-head{
       display:grid;
-      grid-template-columns:.8fr 1.2fr;
+      grid-template-columns:.9fr 1.1fr;
       gap:24px;
       align-items:end;
-      margin-bottom:30px;
+      margin-bottom:22px;
     }
 
-    .section-kicker{
-      color:var(--accent-2);
-      font-size:.84rem;
-      font-weight:800;
-      letter-spacing:.16em;
+    .kicker{
+      color:var(--accent-soft);
+      font-size:.76rem;
       text-transform:uppercase;
-      margin-bottom:12px;
+      letter-spacing:.16em;
+      font-weight:800;
+      margin-bottom:10px;
     }
 
-    .section-title{
-      font-size:clamp(2rem, 4vw, 3.7rem);
-      line-height:1.03;
-      letter-spacing:-0.05em;
-      font-weight:850;
+    h2{
+      font-size:clamp(1.55rem, 2.4vw, 2.2rem);
+      line-height:1.12;
+      letter-spacing:-0.035em;
+      font-weight:800;
+      max-width:14ch;
     }
 
     .section-intro{
       color:var(--muted);
-      font-size:1.05rem;
-      max-width:64ch;
+      font-size:.98rem;
+      max-width:60ch;
     }
 
-    .bento-grid{
+    .grid{
       display:grid;
       grid-template-columns:repeat(12, 1fr);
-      gap:22px;
+      gap:18px;
     }
 
-    .glass-card{
-      border-radius:30px;
-      padding:28px;
-      overflow:hidden;
-      position:relative;
+    .card{
+      border-radius:24px;
+      padding:24px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02)),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015)),
         var(--panel-strong);
-    }
-
-    .glass-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      padding:1px;
-      background:linear-gradient(180deg, rgba(94,234,212,0.18), rgba(255,255,255,0.03));
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite:xor;
-      mask-composite:exclude;
-      pointer-events:none;
     }
 
     .span-4{grid-column:span 4}
     .span-5{grid-column:span 5}
     .span-6{grid-column:span 6}
     .span-7{grid-column:span 7}
-    .span-8{grid-column:span 8}
     .span-12{grid-column:span 12}
 
     .card-label{
       display:inline-block;
-      color:var(--accent-2);
-      font-size:.8rem;
-      font-weight:800;
+      margin-bottom:12px;
+      color:var(--accent-soft);
+      font-size:.74rem;
       text-transform:uppercase;
       letter-spacing:.14em;
-      margin-bottom:14px;
+      font-weight:800;
     }
 
-    .glass-card h3{
-      font-size:1.55rem;
-      line-height:1.12;
-      letter-spacing:-0.03em;
-      margin-bottom:14px;
+    .card h3{
+      font-size:1.18rem;
+      line-height:1.35;
+      letter-spacing:-0.02em;
+      margin-bottom:10px;
+      font-weight:700;
     }
 
-    .glass-card p{
+    .card p{
       color:var(--soft);
-      font-size:1rem;
-      margin-bottom:14px;
-      max-width:62ch;
+      font-size:.96rem;
+      line-height:1.7;
+      max-width:56ch;
     }
 
-    .glass-card ul{
+    .list{
       list-style:none;
       display:grid;
       gap:10px;
-      margin-top:10px;
+      margin-top:12px;
     }
 
-    .glass-card li{
+    .list li{
       color:var(--soft);
+      font-size:.95rem;
+      padding-left:18px;
       position:relative;
-      padding-left:20px;
     }
 
-    .glass-card li::before{
+    .list li::before{
       content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:linear-gradient(180deg, var(--accent-2), var(--accent));
       position:absolute;
       left:0;
       top:.7em;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--accent);
       transform:translateY(-50%);
-      box-shadow:0 0 0 6px rgba(32,182,158,0.08);
     }
 
-    .feature-stat{
-      margin-top:18px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    .pill{
-      padding:10px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      color:var(--text);
-      font-size:.92rem;
-      font-weight:600;
-    }
-
-    .flow-grid{
+    .process{
       display:grid;
       grid-template-columns:repeat(4,1fr);
-      gap:18px;
-      margin-top:10px;
+      gap:16px;
     }
 
-    .timeline-card{
-      border-radius:24px;
-      padding:24px;
+    .step{
+      background:var(--panel);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      border-radius:22px;
+      padding:22px;
     }
 
     .step-no{
-      display:inline-flex;
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      display:flex;
       align-items:center;
       justify-content:center;
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      background:rgba(94,234,212,0.09);
+      background:rgba(94,234,212,0.08);
       border:1px solid rgba(94,234,212,0.14);
-      color:var(--accent-2);
+      color:var(--accent-soft);
+      font-size:.86rem;
       font-weight:800;
-      margin-bottom:16px;
+      margin-bottom:14px;
     }
 
-    .timeline-card h4{
-      font-size:1.15rem;
-      margin-bottom:10px;
+    .step h4{
+      font-size:1.02rem;
+      margin-bottom:8px;
+      font-weight:700;
     }
 
-    .timeline-card p{
+    .step p{
       color:var(--muted);
-      font-size:.97rem;
+      font-size:.94rem;
+      line-height:1.65;
     }
 
-    .cta-section{
-      padding:clamp(56px, 8vw, 110px) 0 100px;
+    .cta-wrap{
+      padding:56px 0 84px;
     }
 
     .cta-panel{
-      position:relative;
-      border-radius:36px;
-      padding:clamp(28px, 5vw, 58px);
-      overflow:hidden;
+      border-radius:32px;
+      padding:clamp(26px, 4vw, 46px);
       background:
-        radial-gradient(circle at 80% 20%, rgba(94,234,212,0.12), transparent 24%),
-        radial-gradient(circle at 15% 85%, rgba(56,189,248,0.08), transparent 24%),
-        linear-gradient(180deg, rgba(18,29,49,0.96), rgba(13,22,39,0.96));
+        radial-gradient(circle at 85% 20%, rgba(94,234,212,0.10), transparent 24%),
+        linear-gradient(180deg, rgba(17,25,40,0.95), rgba(14,22,36,0.96));
     }
 
-    .cta-panel::after{
-      content:"";
-      position:absolute;
-      inset:auto -40px -40px auto;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(94,234,212,0.18), transparent 68%);
-      filter:blur(10px);
-      pointer-events:none;
-    }
-
-    .cta-panel h3{
-      font-size:clamp(2rem, 4vw, 4rem);
-      line-height:1.02;
-      letter-spacing:-0.05em;
-      margin-bottom:18px;
-      max-width:12ch;
+    .cta-panel h2{
+      max-width:13ch;
+      margin-bottom:14px;
     }
 
     .cta-panel p{
       color:var(--soft);
-      font-size:1.08rem;
-      max-width:68ch;
-      margin-bottom:26px;
-    }
-
-    .floating-cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      min-height:62px;
-      padding:0 28px;
-      border-radius:999px;
-      background:linear-gradient(135deg, #7cf3e0 0%, #20b69e 45%, #0ea5a0 100%);
-      color:#04131a;
-      font-weight:800;
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.18) inset,
-        0 18px 50px rgba(32,182,158,0.34);
-      transition:.28s ease;
-    }
-
-    .floating-cta:hover{
-      transform:translateY(-3px) scale(1.01);
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,0.18) inset,
-        0 28px 60px rgba(32,182,158,0.40);
+      font-size:1rem;
+      max-width:62ch;
+      line-height:1.75;
+      margin-bottom:22px;
     }
 
     footer{
-      border-top:1px solid rgba(255,255,255,0.06);
-      padding:26px 0 34px;
-      color:#7c8aa5;
+      border-top:1px solid var(--border-soft);
+      padding:24px 0 32px;
+      color:#7b8aa6;
     }
 
     .footer-inner{
@@ -533,24 +461,25 @@
 
     .footer-links{
       display:flex;
-      gap:18px;
+      gap:16px;
       flex-wrap:wrap;
     }
 
     .footer-links a:hover{color:#fff}
 
-    @media (max-width: 1100px){
-      .hero-grid,
-      .section-header{
+    @media (max-width: 1024px){
+      .hero-panel,
+      .section-head{
         grid-template-columns:1fr;
       }
-      .flow-grid{
+
+      .process{
         grid-template-columns:repeat(2,1fr);
       }
-      .span-4,.span-5,.span-6,.span-7,.span-8{
+
+      .span-4,.span-5,.span-6,.span-7{
         grid-column:span 12;
       }
-      h1{max-width:14ch}
     }
 
     @media (max-width: 820px){
@@ -563,49 +492,30 @@
       .nav{
         display:none;
         position:absolute;
-        top:calc(100% + 12px);
+        top:calc(100% + 10px);
         left:18px;
         right:18px;
         padding:14px;
-        border-radius:20px;
+        border-radius:18px;
         background:#132038;
         border:1px solid rgba(255,255,255,0.08);
-        box-shadow:0 18px 40px rgba(0,0,0,0.38);
+        box-shadow:0 20px 40px rgba(0,0,0,0.34);
         flex-direction:column;
         align-items:flex-start;
+        gap:8px;
       }
 
       .nav.open{display:flex}
-      .nav a{font-size:1rem;padding:8px 4px;color:#d7e2f0}
+      .nav a{padding:6px 4px;color:#dbe6f3}
     }
 
     @media (max-width: 640px){
-      .hero{padding-top:42px}
-      .hero-copy,
-      .hero-side,
-      .glass-card,
-      .timeline-card,
-      .cta-panel{
-        border-radius:24px;
-      }
-
-      .flow-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-actions{
-        flex-direction:column;
-      }
-
-      .hero-actions .btn,
-      .floating-cta{
-        width:100%;
-      }
-
-      .footer-inner{
-        flex-direction:column;
-        align-items:flex-start;
-      }
+      .hero{padding-top:40px}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{width:100%}
+      .process{grid-template-columns:1fr}
+      .hero-copy,.hero-aside,.card,.step,.cta-panel{border-radius:22px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
@@ -618,9 +528,9 @@
             <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
             <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
             <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-            <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
-            <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
-            <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
+            ircle cx="34" cy="14" r="3.5" fill="#0F172A"/>
+            ircle cx="29" cy="24" r="3.5" fill="#0F172A"/>
+            ircle cx="25" cy="34" r="3.5" fill="#0F172A"/>
           </svg>
         </div>
         <div class="brand-text">
@@ -634,8 +544,8 @@
       <nav class="nav">
         <a href="index.html">Kezdőlap</a>
         <a href="#mi-az-ai-chat">Mi az AI chat?</a>
-        <a href="#mit-tud">Mit tud?</a>
-        <a href="#mukodes">Hogyan működik?</a>
+        <a href="#elonyok">Előnyök</a>
+        <a href="#mukodes">Működés</a>
         <a href="#kapcsolat">Kapcsolat</a>
       </nav>
     </div>
@@ -643,43 +553,41 @@
 
   <main>
     <section class="hero">
-      <div class="shell hero-grid">
+      <div class="shell hero-panel">
         <div class="hero-copy">
-          <div class="eyebrow">AI Chat vállalati környezetre tervezve</div>
-          <h1>Az AI chat nem egy widget. Hanem egy új üzleti érintkezési réteg.</h1>
+          <div class="eyebrow">AI chat vállalati használatra</div>
+          <h1>AI chat, ami nem csak jelen van, hanem valóban segít.</h1>
           <p class="hero-lead">
-            A modern AI chat olyan intelligens beszélgetési felület, amely képes természetes nyelven kommunikálni,
-            értelmezni a felhasználói szándékot, válaszolni gyakori kérdésekre, és a vállalkozásod tudására,
-            folyamataira vagy dokumentumaira építve azonnali, releváns támogatást adni.
+            Az AI chat egy intelligens beszélgetési felület, amely gyorsan válaszol, eligazítja az érdeklődőket,
+            és támogatja a céged információátadását.
           </p>
           <p class="hero-sub">
-            Nem pusztán automatizált üzenetküldésről van szó, hanem skálázható, AI-vezérelt ügyfélélményről:
-            gyorsabb első reakció, kevesebb elveszett érdeklődő, egységesebb kommunikáció és lényegesen hatékonyabb információátadás.
+            Nem öncélú technológia, hanem egy letisztult, skálázható ügyfélkapcsolati réteg a weboldalon.
           </p>
 
           <div class="hero-actions">
             <a href="mailto:info@turnai.co.hu" class="btn btn-primary">Beszéljünk az AI lehetőségekről</a>
-            <a href="#mi-az-ai-chat" class="btn btn-secondary">Megmutatom, mit jelent üzletileg</a>
+            <a href="#mi-az-ai-chat" class="btn btn-secondary">További részletek</a>
           </div>
         </div>
 
-        <aside class="hero-side" aria-label="Kiemelt előnyök">
-          <div class="metric">
-            <div class="metric-label">Miért fontos?</div>
-            <strong>Azonnali első reakció</strong>
-            <span>Az AI chat a beérkező kérdésekre nem munkaidőben, hanem azonnal tud reagálni.</span>
+        <aside class="hero-aside" aria-label="Kiemelt pontok">
+          <div class="mini-card">
+            <span>Mit ad?</span>
+            <strong>Gyorsabb első reakció</strong>
+            <p>A látogatók azonnal választ kapnak a legfontosabb kérdéseikre.</p>
           </div>
 
-          <div class="metric">
-            <div class="metric-label">Mit vált ki?</div>
-            <strong>Kevesebb ismétlődő manuális munka</strong>
-            <span>FAQ-k, előszűrés, adatbekérés, termékinformációk és alap ügyfélkérések automatizálhatók.</span>
+          <div class="mini-card">
+            <span>Mit tehermentesít?</span>
+            <strong>Kevesebb ismétlődő kommunikáció</strong>
+            <p>Az alapinformációk átadása automatizálható és egységesebbé válik.</p>
           </div>
 
-          <div class="metric">
-            <div class="metric-label">Mire épül?</div>
-            <strong>Vállalati tudás + AI értelmezés</strong>
-            <span>Nem csak kulcsszavakat keres, hanem összefüggések alapján értelmezi a kérdéseket.</span>
+          <div class="mini-card">
+            <span>Miért hasznos?</span>
+            <strong>Rendezettebb ügyfélút</strong>
+            <p>Segít a látogatót a megfelelő szolgáltatáshoz vagy következő lépéshez irányítani.</p>
           </div>
         </aside>
       </div>
@@ -687,126 +595,88 @@
 
     <section class="section" id="mi-az-ai-chat">
       <div class="shell">
-        <div class="section-header">
+        <div class="section-head">
           <div>
-            <div class="section-kicker">Mi az AI chat?</div>
-            <h2 class="section-title">Az AI chat egy intelligens, beszélgetésalapú digitális asszisztens</h2>
+            <div class="kicker">Mi az AI chat?</div>
+            <h2>Intelligens párbeszéd a weboldalad és az érdeklődő között</h2>
           </div>
           <p class="section-intro">
-            Az AI chat egy olyan rendszer, amely természetes nyelvi kérdéseket értelmez, kontextust tart meg,
-            és képes hasznos válaszokat adni emberi stílusú párbeszédben. Egy vállalati környezetben ez azt jelenti,
-            hogy a weboldalra érkező érdeklődő nem menüpontok és hosszú oldalak között keresgél, hanem egyszerűen megkérdezi,
-            amire kíváncsi — és azonnali, célzott választ kap.
+            Az AI chat természetes nyelven kommunikál, megérti a kérdések szándékát, és releváns válaszokat ad
+            a céged tartalmára vagy tudására építve.
           </p>
         </div>
 
-        <div class="bento-grid">
-          <article class="glass-card span-7">
-            <span class="card-label">Üzleti definíció</span>
-            <h3>Az AI chat a weboldalad statikus információit aktív, interaktív ügyfélélménnyé alakítja.</h3>
+        <div class="grid">
+          <article class="card span-7">
+            <span class="card-label">Lényeg</span>
+            <h3>Nem egy egyszerű chatablak, hanem egy intelligens információs felület.</h3>
             <p>
-              Egy hagyományos weboldal információt publikál. Egy AI chat viszont párbeszédet kezdeményez, kérdéseket értelmez,
-              összefüggéseket kezel és a felhasználó szándéka mentén tereli a kommunikációt.
-            </p>
-            <p>
-              Ez különösen értékes akkor, amikor a látogató nem egyetlen előre megírt kérdésre kíváncsi, hanem saját szavaival fogalmaz,
-              bizonytalan, összehasonlít, információt kér, ajánlatot keres, vagy gyors döntést szeretne hozni.
-            </p>
-            <div class="feature-stat">
-              <span class="pill">Természetes nyelv</span>
-              <span class="pill">Kontextuskezelés</span>
-              <span class="pill">Skálázható válaszadás</span>
-            </div>
-          </article>
-
-          <article class="glass-card span-5">
-            <span class="card-label">Nem ugyanaz, mint...</span>
-            <h3>Nem egyszerű élő chat. Nem szabályalapú menübot. Nem kulcsszavas kereső.</h3>
-            <p>
-              Az AI chat nem kizárólag előre megírt válaszsablonokból dolgozik. Képes rugalmasabban reagálni,
-              követőkérdéseket kezelni, és emberibb, folyamatosabb kommunikációt nyújtani.
+              Segít abban, hogy a látogatók gyorsabban eligazodjanak, kevesebb súrlódással kapjanak választ,
+              és könnyebben jussanak el a kapcsolatfelvételig vagy a megfelelő megoldásig.
             </p>
           </article>
 
-          <article class="glass-card span-4">
-            <span class="card-label">Mire jó?</span>
-            <h3>Gyors válaszadás</h3>
-            <p>Azonnal reagál a gyakori kérdésekre, így az érdeklődő nem marad visszajelzés nélkül.</p>
-          </article>
-
-          <article class="glass-card span-4">
-            <span class="card-label">Mire jó?</span>
-            <h3>Információterelés</h3>
-            <p>A látogatót a releváns szolgáltatáshoz, megoldáshoz vagy következő lépéshez tudja vezetni.</p>
-          </article>
-
-          <article class="glass-card span-4">
-            <span class="card-label">Mire jó?</span>
-            <h3>Érdeklődő-előszűrés</h3>
-            <p>Segíthet pontosítani az igényt még azelőtt, hogy emberi kolléga bevonására lenne szükség.</p>
+          <article class="card span-5">
+            <span class="card-label">Különbség</span>
+            <h3>Több, mint egy szabályalapú chatbot.</h3>
+            <p>
+              Rugalmasabban kezeli a megfogalmazásokat, követőkérdéseket is tud értelmezni,
+              és természetesebb párbeszédet ad.
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="mit-tud">
+    <section class="section" id="elonyok">
       <div class="shell">
-        <div class="section-header">
+        <div class="section-head">
           <div>
-            <div class="section-kicker">Mit tud egy AI chat?</div>
-            <h2 class="section-title">Többet, mint válaszolni: értelmez, összefoglal, segít és terel</h2>
+            <div class="kicker">Üzleti előnyök</div>
+            <h2>Letisztult ügyfélélmény, jobb működési hatékonyság</h2>
           </div>
           <p class="section-intro">
-            Egy jól beállított AI chat sokkal több lehet egy egyszerű kapcsolatfelvételi eszköznél. A megfelelő üzleti logikával
-            a vállalkozás egyik legfontosabb digitális kapcsolódási pontjává válhat.
+            A valódi érték nem önmagában a chat, hanem az, hogy gyorsabbá, követhetőbbé és skálázhatóbbá teszi a kommunikációt.
           </p>
         </div>
 
-        <div class="bento-grid">
-          <article class="glass-card span-6">
-            <span class="card-label">Ügyféloldali érték</span>
-            <h3>Segít gyorsabban eligazodni a szolgáltatásaid között</h3>
-            <p>
-              A felhasználó gyakran nem tudja pontosan, melyik szolgáltatás illik hozzá. Az AI chat képes kérdéseken keresztül
-              pontosítani az igényt, és a megfelelő információhoz irányítani.
-            </p>
-            <ul>
-              <li>Szolgáltatásajánlás a megfogalmazott igény alapján</li>
-              <li>Gyakori kérdések intelligens kezelése</li>
-              <li>Ajánlatkérés előkészítése strukturált adatbekéréssel</li>
+        <div class="grid">
+          <article class="card span-4">
+            <span class="card-label">01</span>
+            <h3>Azonnali információadás</h3>
+            <p>A legfontosabb kérdésekre gyors és konzisztens válasz adható.</p>
+          </article>
+
+          <article class="card span-4">
+            <span class="card-label">02</span>
+            <h3>Jobb érdeklődőkezelés</h3>
+            <p>Az érdeklődő nem marad iránymutatás nélkül, így könnyebben lép tovább.</p>
+          </article>
+
+          <article class="card span-4">
+            <span class="card-label">03</span>
+            <h3>Kevesebb manuális teher</h3>
+            <p>Az ismétlődő kérdések kezelése részben automatizálható.</p>
+          </article>
+
+          <article class="card span-6">
+            <span class="card-label">Mire használható?</span>
+            <h3>FAQ, szolgáltatásmagyarázat, előszűrés és kapcsolatfelvételi támogatás</h3>
+            <ul class="listst">
+              >Gyakori kérdések megválaszolása</l/li>
+              >Szolgáltatások közötti eligazítás</l/li>
+              >Ajánlatkérés előkészítése</l/li>
+              >Érdeklődők irányítása a megfelelő csatornára</li>
             </ul>
           </article>
 
-          <article class="glass-card span-6">
-            <span class="card-label">Belső hatékonyság</span>
-            <h3>Leveszi a repetitív kommunikáció terhét a csapat válláról</h3>
+          <article class="card span-6">
+            <span class="card-label">Vezetői nézőpont</span>
+            <h3>Professzionálisabb digitális jelenlét</h3>
             <p>
-              Sok cégnél ugyanazok a kérdések ismétlődnek: árak, működés, határidők, folyamat, dokumentumok, elérhetőség, tudnivalók.
-              Az AI chat ezeket a beszélgetéseket skálázható módon képes támogatni.
+              Egy jól kialakított AI chat azt mutatja, hogy a cég gyors, rendszerszintű és ügyfélközpontú módon kezeli
+              az információátadást.
             </p>
-            <ul>
-              <li>Kevesebb ismétlődő e-mail és manuális válasz</li>
-              <li>Gyorsabb információátadás az értékesítés vagy ügyfélszolgálat felé</li>
-              <li>Egységesebb kommunikáció több érdeklődő esetén is</li>
-            </ul>
-          </article>
-
-          <article class="glass-card span-8">
-            <span class="card-label">Valós működési kép</span>
-            <h3>Az AI chat lehet weboldali asszisztens, tudásbázis-felület, előszűrő rendszer vagy digitális kapcsolattartó pont</h3>
-            <p>
-              Attól függően, mire van szükség, az AI chat épülhet a weboldalad tartalmára, belső dokumentumokra,
-              szolgáltatásleírásokra, GYIK-re, termékinformációkra vagy akár egy vállalati tudásbázisra is.
-            </p>
-            <p>
-              Így nemcsak “beszél”, hanem valóban a cégedhez illeszkedő válaszokat ad, releváns üzleti kontextusban.
-            </p>
-          </article>
-
-          <article class="glass-card span-4">
-            <span class="card-label">Kiemelt előny</span>
-            <h3>24/7 jelenlét</h3>
-            <p>Az érdeklődők nem mindig munkaidőben döntenek. Az AI chat ilyenkor is jelen van.</p>
           </article>
         </div>
       </div>
@@ -814,158 +684,57 @@
 
     <section class="section" id="mukodes">
       <div class="shell">
-        <div class="section-header">
+        <div class="section-head">
           <div>
-            <div class="section-kicker">Hogyan működik?</div>
-            <h2 class="section-title">Az AI chat működése egyszerű a felhasználónak, de stratégiai a vállalkozásnak</h2>
+            <div class="kicker">Működés</div>
+            <h2>Egyszerű élmény a felhasználónak, strukturált logika a háttérben</h2>
           </div>
           <p class="section-intro">
-            A látogató egy kérdést tesz fel saját szavaival. A rendszer értelmezi a szándékot, releváns információt keres,
-            majd egy érthető, kontextusba illesztett választ ad. Ha szükséges, következő lépést is ajánl: kapcsolatfelvétel,
-            ajánlatkérés, szolgáltatásválasztás vagy további pontosítás.
+            A látogató kérdez, a rendszer értelmez, válaszol, és szükség esetén a következő lépés felé terel.
           </p>
         </div>
 
-        <div class="flow-grid">
-          <article class="timeline-card">
+        <div class="process">
+          <article class="step">
             <div class="step-no">01</div>
-            <h4>Kérdés érkezik</h4>
-            <p>A látogató természetes nyelven ír, nem kell pontos menüpontokat vagy kulcsszavakat ismernie.</p>
+            <h4>Kérdés</h4>
+            <p>A látogató természetes nyelven írja le, mire van szüksége.</p>
           </article>
 
-          <article class="timeline-card">
+          <article class="step">
             <div class="step-no">02</div>
-            <h4>Értelmezés történik</h4>
-            <p>Az AI megpróbálja megérteni, mire kíváncsi valójában: információt keres, összehasonlít vagy ajánlatot szeretne.</p>
+            <h4>Értelmezés</h4>
+            <p>Az AI felismeri a szándékot és a releváns témát.</p>
           </article>
 
-          <article class="timeline-card">
+          <article class="step">
             <div class="step-no">03</div>
-            <h4>Releváns válasz készül</h4>
-            <p>A rendszer a rendelkezésre álló vállalati tartalom és logika alapján összerakja a legjobb választ.</p>
+            <h4>Válasz</h4>
+            <p>A rendszer a céges tartalom alapján ad gyors, célzott információt.</p>
           </article>
 
-          <article class="timeline-card">
+          <article class="step">
             <div class="step-no">04</div>
-            <h4>Terelés vagy átadás</h4>
-            <p>Ha szükséges, továbblépést javasol: konzultáció, e-mail, kapcsolatfelvétel vagy megfelelő szolgáltatás.</p>
+            <h4>Továbblépés</h4>
+            <p>Kapcsolatfelvételhez, szolgáltatáshoz vagy következő akcióhoz irányít.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="shell">
-        <div class="section-header">
-          <div>
-            <div class="section-kicker">Mitől értékes vállalati szinten?</div>
-            <h2 class="section-title">Az AI chat üzleti előnye nem a “technológia”, hanem a jobb működés</h2>
-          </div>
-          <p class="section-intro">
-            A döntéshozói szempont nem az, hogy van-e a weboldalon chat, hanem az, hogy az mennyi időt takarít meg,
-            mennyire javítja az ügyfélutat, és hogyan támogatja az értékesítést vagy az információáramlást.
-          </p>
-        </div>
-
-        <div class="bento-grid">
-          <article class="glass-card span-4">
-            <span class="card-label">Előny</span>
-            <h3>Gyorsabb reakcióidő</h3>
-            <p>Az érdeklődő nem vár órákat vagy napokat egy első válaszra, így kisebb az elveszett lehetőségek kockázata.</p>
-          </article>
-
-          <article class="glass-card span-4">
-            <span class="card-label">Előny</span>
-            <h3>Konzisztensebb kommunikáció</h3>
-            <p>Minden látogató ugyanarra a minőségre és strukturáltságra számíthat, függetlenül a terheléstől.</p>
-          </article>
-
-          <article class="glass-card span-4">
-            <span class="card-label">Előny</span>
-            <h3>Jobb kapacitáskihasználás</h3>
-            <p>A csapat több idejét fordíthatja magasabb értékű feladatokra az alap kérdések helyett.</p>
-          </article>
-
-          <article class="glass-card span-6">
-            <span class="card-label">Vezetői nézőpont</span>
-            <h3>Az AI chat nem helyettesíti a szakértelmet — felerősíti azt</h3>
-            <p>
-              A legjobb megoldások nem “ember helyett” működnek, hanem az emberi szakértelmet teszik jobban hozzáférhetővé.
-              Az AI chat az első szintű interakciókat gyorsítja fel, és akkor irányít emberhez, amikor annak valódi hozzáadott értéke van.
-            </p>
-          </article>
-
-          <article class="glass-card span-6">
-            <span class="card-label">Stratégiai illeszkedés</span>
-            <h3>Különösen hasznos, ha sok az ismétlődő kérdés vagy komplex a szolgáltatásportfólió</h3>
-            <p>
-              Minél több információt kell rövid idő alatt jól átadni, annál nagyobb szerepe lehet egy intelligens,
-              beszélgetésalapú felületnek a konverzió és az ügyfélélmény javításában.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="shell">
-        <div class="section-header">
-          <div>
-            <div class="section-kicker">Példák</div>
-            <h2 class="section-title">Hogyan néz ki a gyakorlatban?</h2>
-          </div>
-          <p class="section-intro">
-            Az AI chat felhasználása iparágtól és folyamattól függően eltérhet, de a logika ugyanaz: gyorsabb információelérés,
-            jobb eligazítás és kevesebb manuális kommunikáció.
-          </p>
-        </div>
-
-        <div class="bento-grid">
-          <article class="glass-card span-4">
-            <span class="card-label">Weboldali használat</span>
-            <h3>Érdeklődő-támogatás</h3>
-            <p>Segít megérteni, milyen szolgáltatás való a látogatónak, és lerövidíti az első kapcsolatfelvétel idejét.</p>
-          </article>
-
-          <article class="glass-card span-4">
-            <span class="card-label">Belső használat</span>
-            <h3>Tudásbázis-asszisztens</h3>
-            <p>Dokumentumokból, folyamati leírásokból vagy belső anyagokból segít gyorsan információt találni.</p>
-          </article>
-
-          <article class="glass-card span-4">
-            <span class="card-label">Kommunikáció</span>
-            <h3>Gyakori kérdések kezelése</h3>
-            <p>Nem statikus GYIK-ként működik, hanem a kérdés formájától függetlenül tud releváns választ adni.</p>
-          </article>
-
-          <article class="glass-card span-12">
-            <span class="card-label">A lényeg</span>
-            <h3>Az AI chat akkor a legerősebb, ha a céged működéséhez van szabva</h3>
-            <p>
-              Nem egy univerzális dobozos funkció a legértékesebb, hanem az a megoldás, amely valóban a céged nyelvén,
-              szolgáltatásaihoz, folyamataihoz és ügyfélútjához illeszkedve kommunikál. Ekkor válik a chatből tényleges üzleti eszköz.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section" id="kapcsolat">
+    <section class="cta-wrap" id="kapcsolat">
       <div class="shell">
         <div class="cta-panel">
-          <div class="section-kicker">Kiemelt konzultáció</div>
-          <h3>Beszéljünk az AI lehetőségekről</h3>
+          <div class="kicker">Konzultáció</div>
+          <h2>Beszéljünk az AI lehetőségekről</h2>
           <p>
-            Ha szeretnéd megnézni, hogy a te cégednél hol tud valódi üzleti előnyt adni egy AI chat,
-            érdemes nem általánosságban gondolkodni, hanem a saját működésedből kiindulni.
-            Megnézzük, milyen kérdések ismétlődnek, hol vesznek el az érdeklődők, milyen információkat kell újra és újra átadni,
-            és hogy ezekből hol lehet skálázható, professzionális AI-alapú ügyfélélményt építeni.
+            Ha szeretnéd látni, hogy a te cégednél hol adhat valódi üzleti előnyt egy AI chat,
+            nézzük meg együtt a működésedhez legjobban illő megoldást.
           </p>
 
           <div class="hero-actions">
-            <a href="mailto:info@turnai.co.hu" class="floating-cta">Konzultáció kérése</a>
-            <a href="folyamatautomatizalas.html" class="btn btn-secondary">Folyamatautomatizálás megtekintése</a>
+            <a href="mailto:info@turnai.co.hu" class="btn btn-primary">Konzultáció kérése</a>
+            <a href="folyamatautomatizalas.html" class="btn btn-secondary">Folyamatautomatizálás</a>
           </div>
         </div>
       </div>
