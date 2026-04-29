@@ -12,12 +12,12 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI chat cégeknek | TurnAI</title>
-  <meta name="description" content="Letisztult, prémium AI chat megoldások cégeknek: gyorsabb ügyfélkiszolgálás, jobb információátadás és skálázható digitális ügyfélélmény." />
+  <title>AI megoldások cégeknek | TurnAI</title>
+  <meta name="description" content="Letisztult, prémium AI megoldások cégeknek: AI chat, ügyfélkiszolgálás és skálázható digitális ügyfélélmény." />
 
-  //fonts.googleapis.com">
-  //fonts.gstatic.com" crossorigin>
-  //fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -76,6 +76,7 @@
       align-items:center;
       justify-content:space-between;
       gap:20px;
+      position:relative;
     }
 
     .brand{
@@ -119,9 +120,36 @@
       font-size:.95rem;
       color:var(--muted);
       transition:.25s ease;
+      white-space:nowrap;
     }
 
     .nav a:hover{color:#fff}
+
+    .dropdown{position:relative}
+    .dropdown-content{
+      display:none;
+      position:absolute;
+      top:calc(100% + 12px);
+      left:0;
+      min-width:250px;
+      padding:12px;
+      border-radius:18px;
+      background:#132038;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 20px 40px rgba(0,0,0,0.34);
+      flex-direction:column;
+      gap:8px;
+      z-index:1001;
+    }
+
+    .dropdown:hover .dropdown-content{display:flex}
+    .dropdown-content a{
+      padding:8px 10px;
+      border-radius:12px;
+      color:#dbe6f3;
+    }
+
+    .dropdown-content a:hover{background:rgba(255,255,255,0.05)}
 
     .menu-toggle{
       display:none;
@@ -179,7 +207,7 @@
       line-height:1.08;
       letter-spacing:-0.04em;
       font-weight:800;
-      max-width:12ch;
+      max-width:14ch;
       margin-bottom:18px;
     }
 
@@ -213,6 +241,7 @@
       font-size:.95rem;
       font-weight:700;
       transition:.25s ease;
+      white-space:nowrap;
     }
 
     .btn-primary{
@@ -292,6 +321,7 @@
       letter-spacing:.16em;
       font-weight:800;
       margin-bottom:10px;
+      white-space:nowrap;
     }
 
     h2{
@@ -299,7 +329,7 @@
       line-height:1.12;
       letter-spacing:-0.035em;
       font-weight:800;
-      max-width:14ch;
+      max-width:16ch;
     }
 
     .section-intro{
@@ -336,14 +366,16 @@
       text-transform:uppercase;
       letter-spacing:.14em;
       font-weight:800;
+      white-space:nowrap;
     }
 
     .card h3{
       font-size:1.18rem;
-      line-height:1.35;
+      line-height:1.25;
       letter-spacing:-0.02em;
       margin-bottom:10px;
       font-weight:700;
+      max-width:24ch;
     }
 
     .card p{
@@ -412,6 +444,7 @@
       font-size:1.02rem;
       margin-bottom:8px;
       font-weight:700;
+      white-space:nowrap;
     }
 
     .step p{
@@ -433,7 +466,7 @@
     }
 
     .cta-panel h2{
-      max-width:13ch;
+      max-width:14ch;
       margin-bottom:14px;
     }
 
@@ -507,6 +540,17 @@
 
       .nav.open{display:flex}
       .nav a{padding:6px 4px;color:#dbe6f3}
+      .dropdown-content{
+        position:static;
+        display:flex;
+        min-width:0;
+        width:100%;
+        padding:0 0 0 10px;
+        background:transparent;
+        border:0;
+        box-shadow:none;
+      }
+      .dropdown:hover .dropdown-content{display:flex}
     }
 
     @media (max-width: 640px){
@@ -516,6 +560,10 @@
       .process{grid-template-columns:1fr}
       .hero-copy,.hero-aside,.card,.step,.cta-panel{border-radius:22px}
       .footer-inner{flex-direction:column;align-items:flex-start}
+      h1{max-width:12ch}
+      h2{max-width:13ch}
+      .card h3{max-width:20ch}
+      .step h4{white-space:normal}
     }
   </style>
 </head>
@@ -528,9 +576,9 @@
             <path d="M14 14H31" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
             <path d="M14 24H26" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
             <path d="M14 34H22" stroke="#0F172A" stroke-width="4" stroke-linecap="round"/>
-            ircle cx="34" cy="14" r="3.5" fill="#0F172A"/>
-            ircle cx="29" cy="24" r="3.5" fill="#0F172A"/>
-            ircle cx="25" cy="34" r="3.5" fill="#0F172A"/>
+            <circle cx="34" cy="14" r="3.5" fill="#0F172A"/>
+            <circle cx="29" cy="24" r="3.5" fill="#0F172A"/>
+            <circle cx="25" cy="34" r="3.5" fill="#0F172A"/>
           </svg>
         </div>
         <div class="brand-text">
@@ -543,10 +591,17 @@
 
       <nav class="nav">
         <a href="index.html">Kezdőlap</a>
-        <a href="#mi-az-ai-chat">Mi az AI chat?</a>
-        <a href="#elonyok">Előnyök</a>
-        <a href="#mukodes">Működés</a>
-        <a href="#kapcsolat">Kapcsolat</a>
+        <div class="dropdown">
+          <a href="javascript:void(0)">Szolgáltatások</a>
+          <div class="dropdown-content">
+            <a href="folyamatautomatizalas.html">Folyamatautomatizálás</a>
+            <a href="integraciok.html">Érdeklődőkezelés</a>
+            <a href="ai-megoldasok.html">Weboldali AI chat</a>
+          </div>
+        </div>
+        <a href="arazas.html">Árazás</a>
+        <a href="adatvedelem.html">Adatvédelem</a>
+        <a href="impresszum.html">Impresszum</a>
       </nav>
     </div>
   </header>
@@ -555,39 +610,39 @@
     <section class="hero">
       <div class="shell hero-panel">
         <div class="hero-copy">
-          <div class="eyebrow">AI chat vállalati használatra</div>
-          <h1>AI chat, ami nem csak jelen van, hanem valóban segít.</h1>
+          <div class="eyebrow">AI megoldások cégeknek</div>
+          <h1>AI chat és automatizálás, ami valóban segít.</h1>
           <p class="hero-lead">
-            Az AI chat egy intelligens beszélgetési felület, amely gyorsan válaszol, eligazítja az érdeklődőket,
-            és támogatja a céged információátadását.
+            A TurnAI olyan rendszereket épít, amelyek gyorsabban kezelik az érdeklődőket,
+            csökkentik az ismétlődő kérdéseket, és rendezettebbé teszik a működést.
           </p>
           <p class="hero-sub">
-            Nem öncélú technológia, hanem egy letisztult, skálázható ügyfélkapcsolati réteg a weboldalon.
+            Nem egy látványos extra, hanem egy üzletileg hasznos, letisztult digitális eszköz.
           </p>
 
           <div class="hero-actions">
-            <a href="mailto:info@turnai.co.hu" class="btn btn-primary">Beszéljünk az AI lehetőségekről</a>
-            <a href="#mi-az-ai-chat" class="btn btn-secondary">További részletek</a>
+            <a href="mailto:info@turnai.co.hu" class="btn btn-primary">Egyeztetést kérek</a>
+            <a href="#mi-az-ai-chat" class="btn btn-secondary">Részletek</a>
           </div>
         </div>
 
         <aside class="hero-aside" aria-label="Kiemelt pontok">
           <div class="mini-card">
-            <span>Mit ad?</span>
-            <strong>Gyorsabb első reakció</strong>
+            <span>Weboldali AI chat</span>
+            <strong>Gyorsabb válaszadás</strong>
             <p>A látogatók azonnal választ kapnak a legfontosabb kérdéseikre.</p>
           </div>
 
           <div class="mini-card">
-            <span>Mit tehermentesít?</span>
-            <strong>Kevesebb ismétlődő kommunikáció</strong>
-            <p>Az alapinformációk átadása automatizálható és egységesebbé válik.</p>
+            <span>Érdeklődőkezelés</span>
+            <strong>Több rendezett megkeresés</strong>
+            <p>Az AI segít az alapadatok bekérésében és az érdeklődők rendszerezésében.</p>
           </div>
 
           <div class="mini-card">
-            <span>Miért hasznos?</span>
-            <strong>Rendezettebb ügyfélút</strong>
-            <p>Segít a látogatót a megfelelő szolgáltatáshoz vagy következő lépéshez irányítani.</p>
+            <span>Folyamatautomatizálás</span>
+            <strong>Kevesebb manuális teher</strong>
+            <p>Az ismétlődő adminisztratív lépések automatizálhatók és egységesebbé válnak.</p>
           </div>
         </aside>
       </div>
@@ -598,7 +653,7 @@
         <div class="section-head">
           <div>
             <div class="kicker">Mi az AI chat?</div>
-            <h2>Intelligens párbeszéd a weboldalad és az érdeklődő között</h2>
+            <h2>Intelligens párbeszéd a weboldal és a látogató között</h2>
           </div>
           <p class="section-intro">
             Az AI chat természetes nyelven kommunikál, megérti a kérdések szándékát, és releváns válaszokat ad
@@ -609,7 +664,7 @@
         <div class="grid">
           <article class="card span-7">
             <span class="card-label">Lényeg</span>
-            <h3>Nem egy egyszerű chatablak, hanem egy intelligens információs felület.</h3>
+            <h3>Nem egyszerű chatablak, hanem egy intelligens információs réteg.</h3>
             <p>
               Segít abban, hogy a látogatók gyorsabban eligazodjanak, kevesebb súrlódással kapjanak választ,
               és könnyebben jussanak el a kapcsolatfelvételig vagy a megfelelő megoldásig.
@@ -620,7 +675,7 @@
             <span class="card-label">Különbség</span>
             <h3>Több, mint egy szabályalapú chatbot.</h3>
             <p>
-              Rugalmasabban kezeli a megfogalmazásokat, követőkérdéseket is tud értelmezni,
+              Rugalmasabban kezeli a megfogalmazásokat, a követőkérdéseket is értelmezi,
               és természetesebb párbeszédet ad.
             </p>
           </article>
@@ -662,11 +717,11 @@
           <article class="card span-6">
             <span class="card-label">Mire használható?</span>
             <h3>FAQ, szolgáltatásmagyarázat, előszűrés és kapcsolatfelvételi támogatás</h3>
-            <ul class="listst">
-              >Gyakori kérdések megválaszolása</l/li>
-              >Szolgáltatások közötti eligazítás</l/li>
-              >Ajánlatkérés előkészítése</l/li>
-              >Érdeklődők irányítása a megfelelő csatornára</li>
+            <ul class="list">
+              <li>Gyakori kérdések megválaszolása.</li>
+              <li>Szolgáltatások közötti eligazítás.</li>
+              <li>Ajánlatkérés előkészítése.</li>
+              <li>Érdeklődők irányítása a megfelelő csatornára.</li>
             </ul>
           </article>
 
@@ -726,7 +781,7 @@
       <div class="shell">
         <div class="cta-panel">
           <div class="kicker">Konzultáció</div>
-          <h2>Beszéljünk az AI lehetőségekről</h2>
+          <h2>Kérj rövid egyeztetést</h2>
           <p>
             Ha szeretnéd látni, hogy a te cégednél hol adhat valódi üzleti előnyt egy AI chat,
             nézzük meg együtt a működésedhez legjobban illő megoldást.
